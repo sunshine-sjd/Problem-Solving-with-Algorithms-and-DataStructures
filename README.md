@@ -32,7 +32,7 @@ Note learning process
         return Fraction(new_num/gcd_num, new_deco/gcd_num)  
 
 
-2. 寻找列表里的最小数
+2. 寻找列表里的最小数:
 ----
 O(n2)和O(n)复杂度的比较
 
@@ -55,3 +55,40 @@ O(n2)和O(n)复杂度的比较
                 mininum = i
         return mininum
     
+3.infinite monkey theorem:
+----
+    import random,string
+
+    # shakespeare = 'methinks it is a weasel'
+    shakespeare = 'abc'
+    quoteLen = len(shakespeare)
+
+
+    def generate():
+        char = string.ascii_lowercase+' '
+        randchars = ''.join(random.choice(char) for _ in range(quoteLen))
+        return randchars
+
+
+    def score():
+        scorenum = 0
+        randchars = generate()
+        shake = shakespeare.split()
+        randlist = randchars.split()
+        for i,j in zip(shake,randlist):
+            if i==j:
+               scorenum += 1
+        scorecount = (scorenum / quoteLen) * 100
+        return scorecount
+
+    def main():
+        run = 0
+        curScore = 0
+        while not(curScore == 100):
+            curScore = score()
+            if curScore != 0:
+                print(run, " = ", curScore)
+            run += 1
+
+    if __name__ == '__main__':
+        main()
