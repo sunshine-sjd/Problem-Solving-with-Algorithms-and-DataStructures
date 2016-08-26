@@ -29,3 +29,25 @@ class Fraction:
             gcd_deco, gcd_num = gcd_num, gcd_deco % gcd_num
         print gcd_num
     return Fraction(new_num/gcd_num, new_deco/gcd_num)
+
+
+2. 寻找列表里的最小数
+O(n2)和O(n)复杂度的比较
+
+def find_mininum_in_list_01(ToUsedList):
+    mininum = ToUsedList[0]
+    for i in ToUsedList:
+        ismininum = True
+        for j in ToUsedList:
+            if i > j:
+                ismininum = False
+        if ismininum:
+            mininum = i
+    return mininum
+
+def find_mininum_in_list_02(ToUsedList):
+    mininum = ToUsedList[0]
+    for i in ToUsedList:
+        if mininum > i:
+            mininum = i
+    return mininum
