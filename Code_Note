@@ -1,0 +1,25 @@
+1.最大公约数：
+
+欧几里德算法又称辗转相除法， 用于计算两个整数a, b的最大公约数。其计算原理依赖于下面的定理：
+定理： gcd(a, b) = gcd(b, a mod b)
+class Fraction:
+    def __init__(self, top, bottom):
+        self.num = top
+        self.deco = bottom
+
+    def __repr__(self):
+        return str(self.num) + "/" + str(self.deco)
+
+    def __add__(self, other):
+        new_num = self.num * other.deco + self.deco * other.num
+        new_deco = self.deco * other.deco
+        if new_num > new_deco:      # 
+            gcd_num = new_deco
+            gcd_deco = new_num
+        else:
+            gcd_num = new_num
+            gcd_deco = new_deco
+        while gcd_deco % gcd_num != 0:
+            gcd_deco, gcd_num = gcd_num, gcd_deco % gcd_num
+        print gcd_num
+        return Fraction(new_num/gcd_num, new_deco/gcd_num)
