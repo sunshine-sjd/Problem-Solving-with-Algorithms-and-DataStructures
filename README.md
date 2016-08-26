@@ -8,13 +8,14 @@ Note learning process
 定理： gcd(a, b) = gcd(b, a mod b)
 
 class Fraction:
+
     def __init__(self, top, bottom):
         self.num = top
         self.deco = bottom
-
+        
     def __repr__(self):
         return str(self.num) + "/" + str(self.deco)
-
+        
     def __add__(self, other):
         new_num = self.num * other.deco + self.deco * other.num
         new_deco = self.deco * other.deco
