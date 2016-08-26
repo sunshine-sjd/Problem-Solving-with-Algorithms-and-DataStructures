@@ -27,4 +27,4 @@ class Fraction:
         while gcd_deco % gcd_num != 0:
             gcd_deco, gcd_num = gcd_num, gcd_deco % gcd_num
         print gcd_num
-return Fraction(new_num/gcd_num, new_deco/gcd_num)
+    return Fraction(new_num/gcd_num, new_deco/gcd_num)
