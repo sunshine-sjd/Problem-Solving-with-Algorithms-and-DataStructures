@@ -124,4 +124,16 @@ O(n2)和O(n)复杂度的比较
             match = True
         return match
 ```        
-       
+
+5. Devise an experiment to verify that the list index operator is 𝑂(1)
+---
+```Python
+    import timeit
+    import random
+
+    for i in xrange(10000, 100000, 20000):
+        x = list(range(i))
+        t = timeit.Timer('x[random.randrange(%d)]' % i, 'from __main__ import x, random')
+        index_time = t.timeit(number=1000)
+        print('%d time: %10.7f' % (i, index_time))
+```
