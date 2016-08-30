@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Problem-solving-with-algorithms-and-datastructures by sunshine-sjd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Problem-solving-with-algorithms-and-datastructures</h1>
+      <h2 class="project-tagline">Note learning process</h2>
+      <a href="https://github.com/sunshine-sjd/Problem-Solving-with-Algorithms-and-DataStructures" class="btn">View on GitHub</a>
+      <a href="https://github.com/sunshine-sjd/Problem-Solving-with-Algorithms-and-DataStructures/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sunshine-sjd/Problem-Solving-with-Algorithms-and-DataStructures/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="problem-solving-with-algorithms-and-datastructures" class="anchor" href="#problem-solving-with-algorithms-and-datastructures" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Problem-Solving-with-Algorithms-and-DataStructures</h1>
+
+<p>Note learning process</p>
+
+<h2>
+<a id="1最大公约数" class="anchor" href="#1%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.最大公约数：</h2>
+
+<p>欧几里德算法又称辗转相除法， 用于计算两个整数a, b的最大公约数。其计算原理依赖于下面的定理：
+定理： gcd(a, b) = gcd(b, a mod b)</p>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">class</span> <span class="pl-en">Fraction</span>:   
+
+        <span class="pl-k">def</span> <span class="pl-c1">__init__</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">top</span>, <span class="pl-smi">bottom</span>):
+            <span class="pl-v">self</span>.num <span class="pl-k">=</span> top
+            <span class="pl-v">self</span>.deco <span class="pl-k">=</span> bottom
+
+        <span class="pl-k">def</span> <span class="pl-c1">__repr__</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>):
+            <span class="pl-k">return</span> <span class="pl-c1">str</span>(<span class="pl-v">self</span>.num) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-c1">str</span>(<span class="pl-v">self</span>.deco)
+
+        <span class="pl-k">def</span> <span class="pl-c1">__add__</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">other</span>):
+            new_num <span class="pl-k">=</span> <span class="pl-v">self</span>.num <span class="pl-k">*</span> other.deco <span class="pl-k">+</span> <span class="pl-v">self</span>.deco <span class="pl-k">*</span> other.num
+            new_deco <span class="pl-k">=</span> <span class="pl-v">self</span>.deco <span class="pl-k">*</span> other.deco
+            <span class="pl-k">if</span> new_num <span class="pl-k">&gt;</span> new_deco:       
+                gcd_num <span class="pl-k">=</span> new_deco
+                gcd_deco <span class="pl-k">=</span> new_num
+            <span class="pl-k">else</span>:
+                gcd_num <span class="pl-k">=</span> new_num
+                gcd_deco <span class="pl-k">=</span> new_deco
+            <span class="pl-k">while</span> gcd_deco <span class="pl-k">%</span> gcd_num <span class="pl-k">!=</span> <span class="pl-c1">0</span>:
+                gcd_deco, gcd_num <span class="pl-k">=</span> gcd_num, gcd_deco <span class="pl-k">%</span> gcd_num
+            <span class="pl-c1">print</span> gcd_num
+        <span class="pl-k">return</span> Fraction(new_num<span class="pl-k">/</span>gcd_num, new_deco<span class="pl-k">/</span>gcd_num)  </pre></div>
+
+<h2>
+<a id="2-寻找列表里的最小数" class="anchor" href="#2-%E5%AF%BB%E6%89%BE%E5%88%97%E8%A1%A8%E9%87%8C%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. 寻找列表里的最小数:</h2>
+
+<p>O(n2)和O(n)复杂度的比较</p>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">def</span> <span class="pl-en">find_mininum_in_list_02</span>(<span class="pl-smi">ToUsedList</span>):
+        mininum <span class="pl-k">=</span> ToUsedList[<span class="pl-c1">0</span>]
+        <span class="pl-k">for</span> i <span class="pl-k">in</span> ToUsedList:
+            <span class="pl-k">if</span> mininum <span class="pl-k">&gt;</span> i:
+                mininum <span class="pl-k">=</span> i
+        <span class="pl-k">return</span> mininum
+
+    <span class="pl-k">def</span> <span class="pl-en">find_mininum_in_list_01</span>(<span class="pl-smi">ToUsedList</span>):
+        mininum <span class="pl-k">=</span> ToUsedList[<span class="pl-c1">0</span>]
+        <span class="pl-k">for</span> i <span class="pl-k">in</span> ToUsedList:
+            ismininum <span class="pl-k">=</span> <span class="pl-c1">True</span>
+            <span class="pl-k">for</span> j <span class="pl-k">in</span> ToUsedList:
+                <span class="pl-k">if</span> i <span class="pl-k">&gt;</span> j:
+                    ismininum <span class="pl-k">=</span> <span class="pl-c1">False</span>
+            <span class="pl-k">if</span> ismininum:
+                mininum <span class="pl-k">=</span> i
+        <span class="pl-k">return</span> mininum</pre></div>
+
+<h2>
+<a id="3infinite-monkey-theorem" class="anchor" href="#3infinite-monkey-theorem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.infinite monkey theorem:</h2>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">import</span> random,string
+
+    <span class="pl-c"># shakespeare = 'methinks it is a weasel'</span>
+    shakespeare <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>abc<span class="pl-pds">'</span></span>
+    quoteLen <span class="pl-k">=</span> <span class="pl-c1">len</span>(shakespeare)
+
+
+    <span class="pl-k">def</span> <span class="pl-en">generate</span>():
+        char <span class="pl-k">=</span> string.ascii_lowercase<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>
+        randchars <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>.join(random.choice(char) <span class="pl-k">for</span> _ <span class="pl-k">in</span> <span class="pl-c1">range</span>(quoteLen))
+        <span class="pl-k">return</span> randchars
+
+
+    <span class="pl-k">def</span> <span class="pl-en">score</span>():
+        scorenum <span class="pl-k">=</span> <span class="pl-c1">0</span>
+        randchars <span class="pl-k">=</span> generate()
+        shake <span class="pl-k">=</span> shakespeare.split()
+        randlist <span class="pl-k">=</span> randchars.split()
+        <span class="pl-k">for</span> i,j <span class="pl-k">in</span> <span class="pl-c1">zip</span>(shake,randlist):
+            <span class="pl-k">if</span> i<span class="pl-k">==</span>j:
+               scorenum <span class="pl-k">+=</span> <span class="pl-c1">1</span>
+        scorecount <span class="pl-k">=</span> (scorenum <span class="pl-k">/</span> quoteLen) <span class="pl-k">*</span> <span class="pl-c1">100</span>
+        <span class="pl-k">return</span> scorecount
+
+    <span class="pl-k">def</span> <span class="pl-en">main</span>():
+        run <span class="pl-k">=</span> <span class="pl-c1">0</span>
+        curScore <span class="pl-k">=</span> <span class="pl-c1">0</span>
+        <span class="pl-k">while</span> <span class="pl-k">not</span>(curScore <span class="pl-k">==</span> <span class="pl-c1">100</span>):
+            curScore <span class="pl-k">=</span> score()
+            <span class="pl-k">if</span> curScore <span class="pl-k">!=</span> <span class="pl-c1">0</span>:
+                <span class="pl-c1">print</span>(run, <span class="pl-s"><span class="pl-pds">"</span> = <span class="pl-pds">"</span></span>, curScore)
+            run <span class="pl-k">+=</span> <span class="pl-c1">1</span>
+
+    <span class="pl-k">if</span> <span class="pl-c1">__name__</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>__main__<span class="pl-pds">'</span></span>:
+        main()</pre></div>
+
+<h2>
+<a id="4-anagram-detection异序string" class="anchor" href="#4-anagram-detection%E5%BC%82%E5%BA%8Fstring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Anagram Detection(异序string):</h2>
+
+<p>方案1--逐个比较  </p>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">def</span> <span class="pl-en">anagram_solution1</span>(<span class="pl-smi">str1</span>, <span class="pl-smi">str2</span>):
+        total_found <span class="pl-k">=</span> <span class="pl-c1">True</span>
+        <span class="pl-k">for</span> i <span class="pl-k">in</span> str1:
+            found <span class="pl-k">=</span> <span class="pl-c1">False</span>
+            <span class="pl-k">for</span> j <span class="pl-k">in</span> str2:
+                <span class="pl-k">if</span> i <span class="pl-k">==</span> j:
+                    found <span class="pl-k">=</span> <span class="pl-c1">True</span>
+            <span class="pl-k">if</span> <span class="pl-k">not</span> found:
+                total_found <span class="pl-k">=</span> <span class="pl-c1">False</span>
+                <span class="pl-k">break</span>
+        <span class="pl-k">return</span> total_found</pre></div>
+
+<p>方案2--用sort排序后比较  </p>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">def</span> <span class="pl-en">anagram_solution2</span>(<span class="pl-smi">str1</span>, <span class="pl-smi">str2</span>): 
+        list1 <span class="pl-k">=</span> <span class="pl-c1">list</span>(str1)
+        list2 <span class="pl-k">=</span> <span class="pl-c1">list</span>(str2)
+        list1.sort()
+        list2.sort()
+        match_list1 <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>.join(list1)
+        match_list2 <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>.join(list2)
+        match <span class="pl-k">=</span> <span class="pl-c1">False</span>
+        <span class="pl-k">if</span> match_list1 <span class="pl-k">==</span> match_list2:
+            match <span class="pl-k">=</span> <span class="pl-c1">True</span>
+        <span class="pl-k">return</span> match</pre></div>
+
+<h2>
+<a id="5-list和dict的一些操作复杂度" class="anchor" href="#5-list%E5%92%8Cdict%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C%E5%A4%8D%E6%9D%82%E5%BA%A6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. List和Dict的一些操作复杂度</h2>
+
+<ul>
+<li>Devise an experiment to verify that the list index operator is 𝑂(1)</li>
+</ul>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">import</span> timeit
+    <span class="pl-k">import</span> random
+
+    <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-v">xrange</span>(<span class="pl-c1">10000</span>, <span class="pl-c1">100000</span>, <span class="pl-c1">20000</span>):
+        x <span class="pl-k">=</span> <span class="pl-c1">list</span>(<span class="pl-c1">range</span>(i))
+        t <span class="pl-k">=</span> timeit.Timer(<span class="pl-s"><span class="pl-pds">'</span>x[random.randrange(<span class="pl-c1">%d</span>)]<span class="pl-pds">'</span></span> <span class="pl-k">%</span> i, <span class="pl-s"><span class="pl-pds">'</span>from __main__ import x, random<span class="pl-pds">'</span></span>)
+        index_time <span class="pl-k">=</span> t.timeit(<span class="pl-v">number</span><span class="pl-k">=</span><span class="pl-c1">1000</span>)
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-c1">%d</span> time: <span class="pl-c1">%10.7f</span><span class="pl-pds">'</span></span> <span class="pl-k">%</span> (i, index_time))</pre></div>
+
+<ul>
+<li>Devise an experiment that compares the performance of the del operator on lists and dictionaries.</li>
+</ul>
+
+<div class="highlight highlight-source-python"><pre>    <span class="pl-k">import</span> timeit
+    <span class="pl-k">import</span> random
+
+    <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-v">xrange</span>(<span class="pl-c1">10000</span>, <span class="pl-c1">100000</span>, <span class="pl-c1">20000</span>):
+        d <span class="pl-k">=</span> {j: <span class="pl-c1">None</span> <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-v">xrange</span>(i)}
+        l <span class="pl-k">=</span> <span class="pl-c1">range</span>(i)
+        t1 <span class="pl-k">=</span> timeit.Timer(<span class="pl-s"><span class="pl-pds">'</span>del d[random.randint(0, i)]<span class="pl-pds">'</span></span>,
+                      <span class="pl-s"><span class="pl-pds">'</span>from __main__ import i, random, d <span class="pl-pds">'</span></span>)
+        t2 <span class="pl-k">=</span> timeit.Timer(<span class="pl-s"><span class="pl-pds">'</span>del l[random.randint(0, i)]<span class="pl-pds">'</span></span>,
+                      <span class="pl-s"><span class="pl-pds">'</span>from __main__ import i, random, l <span class="pl-pds">'</span></span>)
+        dict_del_time <span class="pl-k">=</span> t1.timeit(<span class="pl-v">number</span><span class="pl-k">=</span><span class="pl-c1">100</span>)
+        list_del_time <span class="pl-k">=</span> t2.timeit(<span class="pl-v">number</span><span class="pl-k">=</span><span class="pl-c1">100</span>)
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-c1">%d</span> list time: <span class="pl-c1">%10.7f</span><span class="pl-pds">'</span></span> <span class="pl-k">%</span> (i, list_del_time))
+        <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-c1">%d</span> dcit time: <span class="pl-c1">%10.7f</span><span class="pl-pds">'</span></span> <span class="pl-k">%</span> (i, dict_del_time))</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sunshine-sjd/Problem-Solving-with-Algorithms-and-DataStructures">Problem-solving-with-algorithms-and-datastructures</a> is maintained by <a href="https://github.com/sunshine-sjd">sunshine-sjd</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
