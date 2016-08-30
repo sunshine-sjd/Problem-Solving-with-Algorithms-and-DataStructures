@@ -157,3 +157,4 @@ O(n2)和O(n)复杂度的比较
         print('%d list time: %10.7f' % (i, list_del_time))
         print('%d dcit time: %10.7f' % (i, dict_del_time))
 ```
+- Devise an experiment to verify that get item and set item are 𝑂(1) for dictionaries
