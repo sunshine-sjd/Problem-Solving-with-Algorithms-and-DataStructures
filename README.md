@@ -125,8 +125,10 @@ O(n2)和O(n)复杂度的比较
         return match
 ```        
 
-5. Devise an experiment to verify that the list index operator is 𝑂(1)
----
+5. List和Dict的一些操作复杂度
+----
+- Devise an experiment to verify that the list index operator is 𝑂(1)
+
 ```Python
     import timeit
     import random
@@ -136,4 +138,22 @@ O(n2)和O(n)复杂度的比较
         t = timeit.Timer('x[random.randrange(%d)]' % i, 'from __main__ import x, random')
         index_time = t.timeit(number=1000)
         print('%d time: %10.7f' % (i, index_time))
+```
+   
+- Devise an experiment that compares the performance of the del operator on lists and dictionaries.
+```Python
+    import timeit
+    import random
+
+    for i in xrange(10000, 100000, 20000):
+        d = {j: None for j in xrange(i)}
+        l = range(i)
+        t1 = timeit.Timer('del d[random.randint(0, i)]',
+                      'from __main__ import i, random, d ')
+        t2 = timeit.Timer('del l[random.randint(0, i)]',
+                      'from __main__ import i, random, l ')
+        dict_del_time = t1.timeit(number=100)
+        list_del_time = t2.timeit(number=100)
+        print('%d list time: %10.7f' % (i, list_del_time))
+        print('%d dcit time: %10.7f' % (i, dict_del_time))
 ```
