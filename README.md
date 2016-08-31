@@ -2,15 +2,14 @@
 Note learning process
 目录
 ---
-1. [最大公约数][1.最大公约数：]
-2. 寻找列表里的最小数
-3. infinite monkey theorem
-4. Anagram Detection(异序string)
-5. List和Dict的一些操作复杂度
-6. 找出无序列表中的第k小的数
+1. [最大公约数](#1)
+2. [寻找列表里的最小数](#2)
+3. [infinite monkey theorem](#3)
+4. [Anagram Detection(异序string)](#4)
+5. [List和Dict的一些操作复杂度](#5)
+6. [找出无序列表中的第k小的数](#6)
 
-1.最大公约数：
------
+<h2 id='1'>1.最大公约数：</h2>
 
 欧几里德算法又称辗转相除法， 用于计算两个整数a, b的最大公约数。其计算原理依赖于下面的定理：
 定理： gcd(a, b) = gcd(b, a mod b)
@@ -39,8 +38,8 @@ Note learning process
         return Fraction(new_num/gcd_num, new_deco/gcd_num)  
 ```
 
-2. 寻找列表里的最小数:
-----
+<h2 id='2'>2. 寻找列表里的最小数:</h2>
+
 O(n2)和O(n)复杂度的比较
 ```Python
     def find_mininum_in_list_02(ToUsedList):
@@ -61,8 +60,9 @@ O(n2)和O(n)复杂度的比较
                 mininum = i
         return mininum
 ```    
-3.infinite monkey theorem:
-----  
+
+<h2 id='3'>3.infinite monkey theorem:</h2>
+
 ```Python
     import random,string
 
@@ -100,8 +100,9 @@ O(n2)和O(n)复杂度的比较
     if __name__ == '__main__':
         main()
 ```
-4. Anagram Detection(异序string):
----
+
+<h2 id='4'>4. Anagram Detection(异序string):</h2>
+
 方案1--逐个比较  
 
 ```Python
@@ -130,10 +131,10 @@ O(n2)和O(n)复杂度的比较
         if match_list1 == match_list2:
             match = True
         return match
-```        
+```       
 
-5. List和Dict的一些操作复杂度
-----
+<h2 id='5'>5. List和Dict的一些操作复杂度</h2>
+
 - Devise an experiment to verify that the list index operator is 𝑂(1)
 
 ```Python
@@ -164,8 +165,9 @@ O(n2)和O(n)复杂度的比较
         print('%d list time: %10.7f' % (i, list_del_time))
         print('%d dcit time: %10.7f' % (i, dict_del_time))
 ```
-6. 找出无序列表中的第k小的数：
----
+
+<h2 id='6'>6. 找出无序列表中的第k小的数：</h2>
+
 - 自己想到的一个办法,每次循环找出最小的数放进smallest_kth_list，然后pop掉原列表中的这个数，继续循环找最小数：
 ```Python
     def find_kth_samllest_num_01(NumList, k):
