@@ -2,7 +2,7 @@
 Note learning process
 目录
 ---
-1. [最大公约数](1.最大公约数：)
+1. [最大公约数][1.最大公约数：]
 2. 寻找列表里的最小数
 3. infinite monkey theorem
 4. Anagram Detection(异序string)
