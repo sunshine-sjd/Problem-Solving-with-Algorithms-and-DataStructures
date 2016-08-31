@@ -1,6 +1,13 @@
 # Problem-Solving-with-Algorithms-and-DataStructures
 Note learning process
-
+目录
+---
+1. [最大公约数](1.最大公约数：)
+2. 寻找列表里的最小数
+3. infinite monkey theorem
+4. Anagram Detection(异序string)
+5. List和Dict的一些操作复杂度
+6. 找出无序列表中的第k小的数
 
 1.最大公约数：
 -----
@@ -157,4 +164,41 @@ O(n2)和O(n)复杂度的比较
         print('%d list time: %10.7f' % (i, list_del_time))
         print('%d dcit time: %10.7f' % (i, dict_del_time))
 ```
-- Devise an experiment to verify that get item and set item are 𝑂(1) for dictionaries
+6. 找出无序列表中的第k小的数：
+---
+- 自己想到的一个办法,每次循环找出最小的数放进smallest_kth_list，然后pop掉原列表中的这个数，继续循环找最小数：
+```Python
+    def find_kth_samllest_num_01(NumList, k):
+    smallest_kth_list = NumList[0:k]
+    if k > len(NumList):
+        return NumList
+    for i in xrange(k):
+        pop_n = 0
+        numList_len = len(NumList)
+        for j in xrange(numList_len-1):
+            if NumList[j] < smallest_kth_list[i]:
+                smallest_kth_list[i] = NumList[j]
+                pop_n = j
+        NumList.pop(pop_n)
+    return smallest_kth_list[k-1]
+```
+- 快速排序:    为什么这个算法比第一个慢那么多？？？
+```Python
+    def find_kth_samllest_num_02(NumList):
+    low = []
+    pivotlist = []
+    high = []
+    if len(NumList) < 1:
+        return NumList
+    pivot = NumList[0]
+    for i in NumList:
+        if i < pivot:
+            low.append(i)
+        elif i > pivot:
+            high.append(i)
+        else:
+            pivotlist.append(i)
+    low = find_kth_samllest_num(low)
+    high = find_kth_samllest_num(high)
+    return low + pivotlist + high
+```
