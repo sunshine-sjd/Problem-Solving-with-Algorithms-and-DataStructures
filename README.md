@@ -8,6 +8,7 @@ Note learning process
 4. [Anagram Detection(异序string)](#4)
 5. [List和Dict的一些操作复杂度](#5)
 6. [找出无序列表中的第k小的数](#6)
+7. [堆的基本概念](#7)
 
 <h2 id='1'>1.最大公约数：</h2>
 
@@ -203,4 +204,30 @@ O(n2)和O(n)复杂度的比较
         low = find_kth_samllest_num(low)
         high = find_kth_samllest_num(high)
         return low + pivotlist + high
+```
+<h2 id='7'>7. 堆的概念：</h2>
+
+- 定义
+```Python
+    class Stack():
+        def __init__(self):
+            self.items = []
+
+        def is_empty(self):
+            return self.items == []
+
+        def push(self, item):
+            self.items.append(item)
+
+        def pop(self):
+            return self.items.pop()
+
+        def peek(self):
+            return self.items[len(self.items)-1]
+
+        def size(self):
+            return len(self.items)
+
+        def __str__(self):
+            return 'stack: %s' % self.items
 ```
