@@ -231,3 +231,14 @@ O(n2)和O(n)复杂度的比较
         def __str__(self):
             return 'stack: %s' % self.items
 ```
+- 用stack反转字符串
+```Python
+    def rev_string(my_str):
+        s = Stack()
+        my_str_rev = ''
+        for i in my_str:
+            s.push(i)
+        while not s.is_empty():
+            my_str_rev += s.pop()
+        return my_str_rev
+```
