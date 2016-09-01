@@ -167,7 +167,7 @@ O(n2)和O(n)复杂度的比较
 ```
 
 <h2 id='6'>6. 找出无序列表中的第k小的数：</h2>
-
+![算法的时间复杂度对比图]( Problem-Solving-with-Algorithms-and-DataStructures/Capture.JPG )
 - 自己想到的一个办法,每次循环找出最小的数放进smallest_kth_list，然后pop掉原列表中的这个数，继续循环找最小数：
 ```Python
     def find_kth_samllest_num_01(NumList, k):
