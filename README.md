@@ -242,3 +242,27 @@ O(n2)和O(n)复杂度的比较
             my_str_rev += s.pop()
         return my_str_rev
 ```
+- Simple Balance Parentheses
+```Python
+    def check_balance_parentheses(parentheses_string):
+        s = Stack()
+        balance = True
+        index = 0
+        parentheses_string_len = len(parentheses_string)
+        while index < parentheses_string_len and balance:
+            parenthesis = parentheses_string[index]
+            if parenthesis == '(':
+                s.push(parenthesis)
+            else:
+                if s.is_empty():
+                    balance = False
+                try:
+                    s.pop()
+                except:
+                    return False
+            index += 1
+        if balance and s.is_empty():
+            return True
+        else:
+            return False
+```
