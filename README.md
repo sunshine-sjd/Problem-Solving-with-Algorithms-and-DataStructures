@@ -266,3 +266,20 @@ O(n2)和O(n)复杂度的比较
         else:
             return False
 ```
+- 十进制转化为任意进制
+
+```Python
+    def decimal_to_base(decimal_num, base):
+        s = Stack()
+        binary_of_decimal = ''
+        digits = '0123456789ABCDEF'
+        while decimal_num > 0:
+            remainder = decimal_num % base
+            s.push(remainder)
+            decimal_num /= base
+
+        while not s.is_empty():
+            binary_of_decimal += digits[s.pop()]
+
+        return binary_of_decimal
+```
