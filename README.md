@@ -9,6 +9,7 @@ Note learning process
 5. [List和Dict的一些操作复杂度](#5)
 6. [找出无序列表中的第k小的数](#6)
 7. [堆的基本概念](#7)
+8. [队列的基本概念](#8)
 
 <h2 id='1'>1.最大公约数：</h2>
 
@@ -205,7 +206,7 @@ O(n2)和O(n)复杂度的比较
         high = find_kth_samllest_num(high)
         return low + pivotlist + high
 ```
-<h2 id='7'>7. 堆的概念：</h2>
+<h2 id='7'>7. 堆的基本概念：</h2>
 
 - 定义
 ```Python
@@ -282,4 +283,46 @@ O(n2)和O(n)复杂度的比较
             binary_of_decimal += digits[s.pop()]
 
         return binary_of_decimal
+```
+
+<h2 id='8'>8. 队列基本的概念：</h2>
+
+- 定义
+```Python
+    class Queue:
+        def __init__(self):
+            self.items = []
+
+        def is_empty(self):
+            return self.items == []
+
+        def enqueue(self, item):
+            self.items.insert(0, item)
+
+        def dequeue(self):
+            return self.items.pop()
+
+        def size(self):
+            return len(self.items)
+
+        def __repr__(self):
+            return 'Queue: %s' % self.items
+```
+
+- Hot-Potato
+
+```Python
+    def hot_potato(potato_list, num):
+        potato_q = Queue()
+        for i in potato_list:
+            potato_q.enqueue(i)   # 将potato_list列表转化为队列Queue
+
+        while potato_q.size() > 1:
+            for y in xrange(num):
+                dequeue_num = potato_q.dequeue()
+                potato_q.enqueue(dequeue_num)    # 将接到potato的人从队首取出，插入到队尾
+            potato_q.dequeue()     # 完成num次接力后，将队首的人淘汰，直到队列的大小为1
+
+        return potato_q.dequeue()
+
 ```
