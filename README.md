@@ -208,7 +208,7 @@ O(n2)和O(n)复杂度的比较
 ```
 <h2 id='7'>7. 堆的基本概念：</h2>
 
-- 定义(左边是尾，右边是首)
+- 定义
 ```Python
     class Stack():
         def __init__(self):
@@ -287,7 +287,7 @@ O(n2)和O(n)复杂度的比较
 
 <h2 id='8'>8. 队列基本的概念：</h2>
 
-- 定义
+- 定义(左边是尾，右边是首)
 ```Python
     class Queue:
         def __init__(self):
