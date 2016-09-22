@@ -10,6 +10,7 @@ Note learning process
 6. [找出无序列表中的第k小的数](#6)
 7. [堆的基本概念](#7)
 8. [队列的基本概念](#8)
+9. [双端队列的基本概念](#9)
 
 <h2 id='1'>1.最大公约数：</h2>
 
@@ -325,4 +326,48 @@ O(n2)和O(n)复杂度的比较
 
         return potato_q.dequeue()
 
+```
+<h2 id='9'>9. 双端队列的基本概念</h2>
+- 定义
+
+```Python
+    class Deque:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return self.items == []
+
+    def add_front(self, item):
+        self.items.append(item)
+
+    def add_rear(self, item):
+        self.items.insert(0, item)
+
+    def remove_front(self):
+        return self.items.pop()
+
+    def remove_rear(self):
+        return self.items.pop(0)
+
+    def size(self):
+        return len(self.items)
+    
+    def __repr__(self):
+        return 'd: %s' % self.items
+```
+- Palindrome check
+
+```Python
+    def palindrome_checker(a_string):
+    palindrome_checker_deque = Deque()
+    for char in a_string:
+        palindrome_checker_deque.add_rear(char)  # 将字符串中字符添加到Deque中
+    palindrome_string = True    
+    while palindrome_checker_deque.size() > 1 and palindrome_string:   
+        rear_char = palindrome_checker_deque.remove_rear()   
+        front_char = palindrome_checker_deque.remove_front()  # 取出首尾的两个字符进行比较
+        if rear_char != front_char:
+            palindrome_string = False   # 首尾字符不相等的话表示不是回文字符串
+    return palindrome_string
 ```
