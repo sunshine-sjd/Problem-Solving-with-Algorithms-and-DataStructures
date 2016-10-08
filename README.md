@@ -499,9 +499,9 @@ O(n2)和O(n)复杂度的比较
 <h2 id='11'>递归：</h2>
 - 需要遵循的三条原则:
 Like the robots of Asimov, all recursive algorithms must obey three important laws:
-1. A recursive algorithm must have a base case.
-2. A recursive algorithm must change its state and move toward the base case.
-3. A recursive algorithm must call itself, recursively.
+   A recursive algorithm must have a base case.
+   A recursive algorithm must change its state and move toward the base case.
+   A recursive algorithm must call itself, recursively.
 
 - 简单的加法递归:
 ```Python
