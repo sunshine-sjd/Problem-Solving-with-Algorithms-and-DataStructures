@@ -12,6 +12,7 @@ Note learning process
 8. [队列的基本概念](#8)
 9. [双端队列的基本概念](#9)
 10. [链表 Linked Lists](#10)
+11. [递归](#11)
 
 <h2 id='1'>1.最大公约数：</h2>
 
@@ -493,4 +494,19 @@ O(n2)和O(n)复杂度的比较
         else:
             temp.set_next(current)
             previous.set_next(temp)
+```
+
+<h2 id='10'>递归：</h2>
+- 需要遵循的三条原则:
+Like the robots of Asimov, all recursive algorithms must obey three important laws:
+1. A recursive algorithm must have a base case.
+2. A recursive algorithm must change its state and move toward the base case.
+3. A recursive algorithm must call itself, recursively.
+- 简单的加法递归:
+```Python
+    def list_sum(num_list):
+    if len(num_list) == 1:
+        return num_list[0]
+    else:
+        return num_list[0] + list_sum(num_list[1:])
 ```
