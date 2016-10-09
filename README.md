@@ -538,4 +538,14 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
     else:
         return s[len(s)-1] + reverse_str(s[0:len(s)-1])
 ```
-
+- 递归方法判断是否是回文：
+```Python
+    # 只对字母进行判断
+    from string import letters   # 所有的英文字母包括大小写
+    def palindrome_string(s):
+        s = ''.join([i for i in s if i in letters])
+        if len(s) <= 1:
+            return True
+        else:
+            return s[0].lower() == s[-1].lower() and palindrome_string(s[1:-1])
+```
