@@ -530,4 +530,12 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
     else:
         return to_str(n / base, base) + convert_string[n % base]
 ```
+- 递归方法反转字符串：
+```Python
+    def reverse_str(s):
+    if len(s) == 1:
+        return s
+    else:
+        return s[len(s)-1] + reverse_str(s[0:len(s)-1])
+```
 
