@@ -511,3 +511,23 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
     else:
         return num_list[0] + list_sum(num_list[1:])
 ```
+
+- 阶乘：
+```Python
+    def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+```
+
+- 整数转化为字符串：
+```Python
+    def to_str(n, base):
+    convert_string = '0123456789ABCDEF'
+    if n < base:
+        return convert_string[n]
+    else:
+        return to_str(n / base, base) + convert_string[n % base]
+```
+
