@@ -13,6 +13,7 @@ Note learning process
 9. [双端队列的基本概念](#9)
 10. [链表 Linked Lists](#10)
 11. [递归](#11)
+12. [排序和搜索](#12)
 
 <h2 id='1'>1.最大公约数：</h2>
 
@@ -548,4 +549,23 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
             return True
         else:
             return s[0].lower() == s[-1].lower() and palindrome_string(s[1:-1])
+```
+
+<h2 id='12'>排序和搜索：</h2>
+
+- 二分法搜索：(已排序的情况)
+```Python
+    def binary_search(a_list, item):
+    first = 0
+    last = len(a_list) - 1
+    found = False
+    while first <= last and not found:
+        middle = (first + last) / 2
+        if a_list[middle] == item:
+            found = True
+        elif a_list[middle] > item:
+            last = middle - 1
+        else:
+            first = middle + 1
+    return found
 ```
