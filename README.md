@@ -334,7 +334,7 @@ O(n2)和O(n)复杂度的比较
 - 定义
 
 ```Python
-    class Deque:
+class Deque:
     def __init__(self):
         self.items = []
 
@@ -362,7 +362,7 @@ O(n2)和O(n)复杂度的比较
 - Palindrome check
 
 ```Python
-    def palindrome_checker(a_string):
+def palindrome_checker(a_string):
     palindrome_checker_deque = Deque()
     for char in a_string:
         palindrome_checker_deque.add_rear(char)  # 将字符串中字符添加到Deque中
@@ -379,7 +379,7 @@ O(n2)和O(n)复杂度的比较
 -定义（Node）
 
 ```Python
-    class Node:
+class Node:
     def __init__(self, init_data):
         self.data = init_data
         self.next =None
@@ -400,7 +400,7 @@ O(n2)和O(n)复杂度的比较
 -定义（UnorderedList）
 
 ```Python
-    class UnorderedList:
+class UnorderedList:
     def __init__(self):
         self.head = None
         
@@ -448,7 +448,7 @@ O(n2)和O(n)复杂度的比较
 
 -定义（OrderedList）
 ```Python
-    class OrderedList:
+class OrderedList:
     def __init__(self):
         self.head = None
         
@@ -506,7 +506,7 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
 
 - 简单的加法递归:
 ```Python
-    def list_sum(num_list):
+def list_sum(num_list):
     if len(num_list) == 1:
         return num_list[0]
     else:
@@ -515,7 +515,7 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
 
 - 阶乘：
 ```Python
-    def factorial(n):
+def factorial(n):
     if n == 0:
         return 1
     else:
@@ -524,7 +524,7 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
 
 - 整数转化为字符串：
 ```Python
-    def to_str(n, base):
+def to_str(n, base):
     convert_string = '0123456789ABCDEF'
     if n < base:
         return convert_string[n]
@@ -533,7 +533,7 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
 ```
 - 递归方法反转字符串：
 ```Python
-    def reverse_str(s):
+def reverse_str(s):
     if len(s) == 1:
         return s
     else:
@@ -555,7 +555,7 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
 
 - 二分法搜索：(已排序的情况)
 ```Python
-    def binary_search(a_list, item):
+def binary_search(a_list, item):
     first = 0
     last = len(a_list) - 1
     found = False
@@ -568,4 +568,19 @@ Like the robots of Asimov, all recursive algorithms must obey three important la
         else:
             first = middle + 1
     return found
+```
+- 二分法：（用到递归）
+
+```Python
+def binary_search_recursive(a_list, item):
+    if len(a_list) == 0:
+        return False
+    else:
+        middle = len(a_list) / 2
+        if a_list[middle] == item:
+            return True
+        elif a_list[middle] > item:
+            return binary_search_recursive(a_list[:middle-1], item)
+        else:
+            return binary_search_recursive(a_list[middle+1:], item)
 ```
