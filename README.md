@@ -584,3 +584,28 @@ def binary_search_recursive(a_list, item):
         else:
             return binary_search_recursive(a_list[middle+1:], item)
 ```
+- 冒泡排序：
+```Python
+def bubble_sort(a_list):
+    a_list_len = len(a_list)
+    for pass_num in range(a_list_len-1, 0, -1):
+        for i in range(pass_num):
+            if a_list[i] > a_list[i+1]:
+                a_list[i], a_list[i+1] = a_list[i+1], a_list[i]
+    return a_list
+```
+- short冒泡排序：
+```Python
+def short_bubble_sort(a_list):
+    exchange = True
+    pass_num = len(a_list) - 1
+    while pass_num > 0 and exchange:
+        for i in range(pass_num):
+            if a_list[i] > a_list[i+1]:
+                a_list[i], a_list[i+1] = a_list[i+1], a_list[i]
+                exchange = True
+            else:
+                exchange = False
+        pass_num -= 1        
+    return a_list
+```
