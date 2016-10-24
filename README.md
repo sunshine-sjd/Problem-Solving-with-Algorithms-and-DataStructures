@@ -609,3 +609,56 @@ def short_bubble_sort(a_list):
         pass_num -= 1        
     return a_list
 ```
+- 选择排序
+```Python
+def selection_sort(a_list):
+    a_list_len = len(a_list)
+    for exchange_position in range(a_list_len - 1, 0, -1):
+        position_of_max = 0
+        for i in range(1, exchange_position + 1):
+            if a_list[i] > a_list[position_of_max]:
+                position_of_max = i
+        a_list[position_of_max], a_list[exchange_position] = a_list[exchange_position], a_list[position_of_max]
+        print a_list
+    return a_list
+```
+- 插入排序
+```Python
+def insertion_sort(a_list):
+    a_list_len = len(a_list)
+    for i in range(1, a_list_len):
+        compare_value = a_list[i]
+        compare_index = i
+        while compare_index > 0 and a_list[compare_index-1] > compare_value:
+            a_list[compare_index] = a_list[compare_index-1]
+            compare_index -= 1
+        a_list[compare_index] = compare_value
+    return a_list
+```
+- '''
+求两序列的和最小差值序列
+题目
+
+有两个序列a,b，大小都为n,序列元素的值任意整形数，无序；
+
+要求：通过交换a,b中的元素，使[序列a元素的和]与[序列b元素的和]之间的差最小。
+'''
+
+```Python
+def small_sub(sorted_list):
+    if not sorted_list:
+        return (([],[]))
+    big = sorted_list[-1]
+    small = sorted_list[-2]
+    big_list, small_list = small_sub(sorted_list[:-2])
+    big_list.append(small)
+    small_list.append(big)
+ 
+    big_list_sum = sum(big_list)
+    small_list_sum = sum(small_list)
+ 
+    if big_list_sum > small_list_sum:
+        return ( (big_list, small_list))
+    else:
+        return (( small_list, big_list))
+```
